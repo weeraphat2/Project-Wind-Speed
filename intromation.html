@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Introduction</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style>
+		Body {
+			background-color: #E1EBF8;
+		}
+    </style>
+</head>
+<body>
+	<section class="bg"></section>
+	<label>
+		<!-- now create a toggle button here -->
+		<input type="checkbox">
+		<div class="toggle">
+			<span class="common top_line"></span>
+			<span class="common middle_line"></span>
+			<span class="common bottom_line"></span>
+		</div>
+		<div class="sidebar">
+			<h1>MENU</h1>
+			<ul>
+				<li style="--i:1"><a href="intromation.html"><i class="fas fa-home"></i>หน้าหลัก</a></li>
+				<li style="--i:2"><a href="meter-page.html"><i class="fab fa-cloudscale"></i>ความเร็วลม</a></li>
+				<li style="--i:3"><a onclick='notavailable()' style="cursor: pointer;"><i class="fas fa-cog"></i>ตั้งค่า</a></li>
+				<li style="--i:4"><a href="index.html"><i class="fas fa-sign-out-alt"></i>ออกจากระบบ</a></li>
+			</ul>
+		</div>
+	</label>
+	<div class="text">
+		<h2>ที่มาและความสำคัญ</h2>
+		<p>ระบบวัดความเร็วลมเพื่อการกีฬามาจากปัญหาของเรื่องการแข่งขันกีฬาหรือการทำกิจกรรมกลางแจ้ง<br> เนื่องจากว่าปกติการแข่งขันกีฬาพวกนี้เราจะต้องคำนึงถึงสภาพอากาศในการจัดการแข่งขันแล้วอย่าง<br>เช่นกีฬาหรือกิจกรรม ยิงธนู ว่าว โดดร่ม บินโดรน ต่างๆพวกนี้ที่เราต้องอาศัยและระวังเรื่องลมที่จะ<br>กระทบกับการแข่งขันหรือการทำกิจกรรมเราจึงสร้างเว็บไซต์ที่ช่วยเช็คหรือบอกสภาพลม<br>และทิศทางลมในช่วงเวลานั้นและความกดอากาศ โดยการใช้เซนเซอร์ RS485 sensor<br>ในการวัดความเร็วลมและทิศทางและBMP280 วัดความกดอากาศ โดยนำค่าที่ได้มาแสดงผลในเว็บไซต์<br>ให้แก่ผู้เข้าใช้ซึ่งจะทำให้ช่วยแก้ปัญหาเรื่องการวางแผนเวลาในจัดการแข่งขันและการทำกิจกรรม<br>ที่เราอาจจะไม่รู้สภาพลมในช่วงการจัดการแข่งระดับนั้นลมแรงไปหรือว่าลมเบาเกินไปหรือไม่</p><br>
+		
+		<p><iframe width="656" height="361" src="https://www.youtube.com/embed/zyhcTsE8ceU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p><br>
+
+		<p><b>ระดับความเร็วลมกับชนิดลม</b><br>1.6 km/h&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;ลมสงบ(Calm)<br>
+		1.6-4.8 km/h&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;ลมเบา(Light air)<br>6.4-8.6 km/h&emsp;&emsp;&emsp;&emsp;&emsp;ลมอ่อน(Light breeze)<br>12.8-19.2 km/h&emsp;&emsp;&emsp;&emsp;&ensp;ลมเฉื่อย(Gentle breeze)<br>20.8-28.8 km/h&emsp;&emsp;&emsp;&emsp;ลมปานกลาง(Moderate breeze)<br>30.4-38.4 km/h&emsp;&emsp;&emsp;&emsp;ลมกระโชก(Fresh breeze)<br>40.0-50.0 km/h&emsp;&emsp;&emsp;&emsp;ลมแรง(Strong breeze)</p><br>
+	</div>
+	
+<script>
+	function notavailable() {
+		alert("This function is not available yet.");}
+</script>
+
+</body>
+</html>

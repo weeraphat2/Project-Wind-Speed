@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel='icon' href='favicon.ico' type='image/x-icon'/ >
+	<title>meter</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style>
+		Body {
+			background-color: ;
+		}
+    </style>
+	<script src="raphael-2.1.4.min.js"></script>
+	<script src="justgage.js"></script>
+</head>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+		<script>
+        // Initialize Firebase
+            var firebaseRef = {};
+            
+            angular.module('firebaseApp', []).service('firebaseService', function() {
+                // สร้าง Function เพื่อ init Firebase เข้ากับ app เรา
+                this.initFirebase = function() {
+                    var config = {
+                        apiKey: "AIzaSyDxbPq8l1Xc9yVXm4YwnzabQYW1GdHRKnU",
+											  authDomain: "wind-speed-b849f.firebaseapp.com",
+											  databaseURL: "https://wind-speed-b849f-default-rtdb.firebaseio.com",
+                    };
+                    firebase.initializeApp(config);
+                    firebaseRef = firebase.database().ref("Set"); 	
+                }
+                // สร้าง Function เพื่อเก็บ event ของ Firebase
+                this.eventFirebase = function() {
+                    firebaseRef.on('value', function(data) {
+                    	const datas = Object.values(data.val());
+                		console.log(datas);
+                        document.getElementById('Windspeed').innerHTML = 'ความเร็วลม : '+ datas[3];
+                        document.getElementById('Direction').innerHTML = 'ทิศ : '+ datas[1];
+                        document.getElementById('Atmosthericpressure').innerHTML = 'ความกดอากาศ : '+ datas[0];
+                        var date1 = datas[3];
+                        var date2 = datas[1];
+                        var date3 = datas[0];
+                        g1.refresh(date1);
+                        g2.refresh(date2);
+                        g3.refresh(date3);
+
+
+
+                        var s = new Date(1640873551).toLocaleTimeString("en-TH")
+												console.log(s)
+												document.getElementById('EpochTime').innerHTML = 'เวลาปัจจุบัน : '+ s;
+
+                    })
+                    		
+
+                }
+                this.push = function(title, content) {}
+            }).controller('firebaseCtrl', function(firebaseService) {
+                // เรียกใช้งาน firebaseService ที่เราสร้างไว้
+                firebaseService.initFirebase();
+                firebaseService.eventFirebase();
+            })
+            
+
+        </script>
+        
+    </head>
+<body>
+	<section class="bg"></section>
+	<label>
+		<!-- now create a toggle button here -->
+		<input type="checkbox">
+		<div class="toggle">
+			<span class="common top_line"></span>
+			<span class="common middle_line"></span>
+			<span class="common bottom_line"></span>
+		</div>
+		<div class="sidebar">
+			<h1>MENU</h1>
+			<ul>
+				<li style="--i:1"><a href="intromation.html"><i class="fas fa-reply-all"></i></i>ย้อนกลับ</a></li>
+			</ul>
+		</div>
+	</label>
+	<div>
+		<h2 style="margin-left: 250px;font-family: 'JasmineUPC', sans-serif;font-size: 30px">ข้อมูลลม(Wind Data)</h2>
+		<h5 id="EpochTime" style="margin-left: 250px; text-align: 75px; font-family: 'JasmineUPC', sans-serif;font-size: 24px;color: #505050;border-bottom: 8px solid #90EE90;padding-bottom: 3px;">ข้อมูลล่าสุด:</h5>
+	</div>	
+<script>
+	function notavailable() {
+		alert("This function is not available yet.");}
+</script>
+		 <body ng-app="firebaseApp">
+        <div ng-controller="firebaseCtrl">
+        	<div id="gauge1" class="gg1"></div>
+        		<h2 id='Windspeed' style="text-align: center;font-size: 22px;color: #8B008B;font-family: 'JasmineUPC'">ความเร็วลม:</h2>
+	        <div id="gauge2" class="gg2"></div>
+	        	<h2 id='Direction' style="text-align: center;font-size: 22px;color: #FF1493;font-family: 'JasmineUPC'">ทิศ:</h2>
+	        <div id="gauge3" class="gg3"></div>
+            <h2 id='Atmosthericpressure'style="text-align: center;font-size: 22px;color: #0c3092;font-family: 'JasmineUPC'">ความกดอากาศ:</h2>
+
+        </div>
+
+   
+ 
+        <script>
+		  var g1 = new JustGage({
+		    id: "gauge1",
+		    value: 4,
+		    min: 1,
+		    max: 30,
+		    title: "Windspeed",
+		    	label: "km/h",
+		    pointer: true,
+        pointerOptions: {
+          toplength: -15,
+          bottomlength: 10,
+          bottomwidth: 6,
+          color: '#000000',
+          stroke: '#ffffff',
+        }
+		  });
+		  var g2 = new JustGage({
+		    id: "gauge2",
+		    value: 180,
+		    min: 0,
+		    max: 360,
+		    title: "Direction",
+		    	label: "องศา",
+		    pointer: true,
+        pointerOptions: {
+          toplength: -15,
+          bottomlength: 10,
+          bottomwidth: 6,
+          color: '#000000',
+        }
+		  });
+		  var g3 = new JustGage({
+		    id: "gauge3",
+		    value: 1012,
+		    min: 1010,
+		    max: 1020,
+		    title: "Atmosthericpressure",
+		    	label: "hPa",
+		    pointer: true,
+        pointerOptions: {
+          toplength: -15,
+          bottomlength: 10,
+          bottomwidth: 6,
+          color: '#000000',
+	      }
+		  });
+		 
+	</script>
+</body>
+</html>
